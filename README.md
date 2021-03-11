@@ -56,6 +56,18 @@ Qualquer problema ou dificuldade com o repositório, você pode entrar em contat
 <br><br>
 Estamos sempre em busca de melhoria. Por isso, caso tenha alguma sugestão, fique à vontade para compartilhar conosco! Boa sorte! 💛
 
-
-
-
+# Executando a API
+## Executando as migrations
+- Instale o CLI do EF 
+```bash
+dotnet tool update --global dotnet-ef
+```
+- Entre no projeto `Alunos.Infrastructure` e execute o seguinte comando
+```bash
+dotnet ef --startup-project ..\Alunos.Api\ database update
+```
+## Executando a solução
+- Entre no projeto `Alunos.Api` e execute o seguinte comando
+```bash
+dotnet run
+```
