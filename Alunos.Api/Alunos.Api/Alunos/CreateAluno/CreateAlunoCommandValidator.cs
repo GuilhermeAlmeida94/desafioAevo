@@ -14,19 +14,19 @@ namespace Alunos.Api.Alunos.CreateAluno
         {
             _context = context;
 
-            RuleFor(v => v.Nome)
+            RuleFor(a => a.Nome)
                 .NotEmpty().WithMessage("O campo nome é obrigatório.")
                 .MaximumLength(250).WithMessage("O campo nome deve ter no máximo 250 caracteres.")
                 .MustAsync(BeUniqueNome).WithMessage("Já existe um aluno com o nome especificado.");
             
-            RuleFor(v => v.Email)
+            RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("O campo email não é válido.");
         }
 
         public async Task<bool> BeUniqueNome(string Nome, CancellationToken cancellationToken)
         {
             return await _context.Alunos
-                .AllAsync(l => l.Nome != Nome);
+                .AllAsync(n => n.Nome != Nome);
         }
     }
 }

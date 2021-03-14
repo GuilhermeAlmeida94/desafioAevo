@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Alunos.Api.Alunos.CreateAluno;
 using MediatR;
+using Alunos.Api.Alunos.UpdateAluno;
 
 namespace Alunos.Api.Controllers
 {
@@ -44,32 +45,16 @@ namespace Alunos.Api.Controllers
             return aluno;
         }
 
-        // PUT: api/Alunos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
+        public async Task<IActionResult> PutAluno(int id, UpdateAlunoCommand command)
         {
-            if (id != aluno.AlunoId)
+            if (id != command.AlunoId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(aluno).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlunoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            if (ModelState.IsValid)
+                await _mediator.Send(command);           
 
             return NoContent();
         }
@@ -97,11 +82,6 @@ namespace Alunos.Api.Controllers
             await _context.SaveChangesAsync();
 
             return aluno;
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return _context.Alunos.Any(e => e.AlunoId == id);
         }
     }
 }
