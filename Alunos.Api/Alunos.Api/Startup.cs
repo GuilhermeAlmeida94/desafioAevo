@@ -5,10 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Alunos.Infrastructure;
-using MediatR;
-using System.Reflection;
-using Alunos.Api.DependencyInjection;
-using AutoMapper;
+using Alunos.Validators;
+using Alunos.RequestHandlers;
 
 namespace Alunos.Api
 {
@@ -37,9 +35,7 @@ namespace Alunos.Api
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             services.AddValidator();
-
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddRequestHandlers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

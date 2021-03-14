@@ -3,29 +3,23 @@ using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
 using Alunos.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using Alunos.Domain.RequestObject;
 
-namespace Alunos.Api.Alunos.CreateAluno
+namespace Alunos.RequestHandlers.Alunos
 {
-    public class CreateAlunoCommand : IRequest<ActionResult<Aluno>>
-    {
-        public string Nome { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class CreateAlunoCommandHandler : IRequestHandler<CreateAlunoCommand, ActionResult<Aluno>>
+    public class CreateAlunoRequestHandler : IRequestHandler<CreateAlunoRequest, Aluno>
     {
         private readonly IAppDbContext _context;
         private readonly IMapper _mapper;
 
-        public CreateAlunoCommandHandler(IAppDbContext context, IMapper mapper)
+        public CreateAlunoRequestHandler(IAppDbContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
         }
 
-        public async Task<ActionResult<Aluno>> Handle(CreateAlunoCommand command, CancellationToken cancellationToken)
+        public async Task<Aluno> Handle(CreateAlunoRequest command, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<Aluno>(command);
 

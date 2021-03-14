@@ -5,28 +5,22 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Alunos.Domain.Interfaces;
+using Alunos.Domain.RequestObject;
 
-namespace Alunos.Api.Alunos.UpdateAluno
+namespace Alunos.RequestHandlers.Alunos
 {
-    public class UpdateAlunoCommand : IRequest
-    {
-        public int AlunoId { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class UpdateAlunoCommandHandler : IRequestHandler<UpdateAlunoCommand>
+    public class UpdateAlunoRequestHandler : IRequestHandler<UpdateAlunoRequest>
     {
         private readonly IAppDbContext _context;
         private readonly IMapper _mapper;
 
-        public UpdateAlunoCommandHandler(IAppDbContext context, IMapper mapper)
+        public UpdateAlunoRequestHandler(IAppDbContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
         }
 
-        public async Task<Unit> Handle(UpdateAlunoCommand command, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateAlunoRequest command, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<Aluno>(command);
 

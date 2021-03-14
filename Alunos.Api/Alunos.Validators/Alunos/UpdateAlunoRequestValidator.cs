@@ -1,16 +1,17 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
+using Alunos.Domain.RequestObject;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alunos.Api.Alunos.UpdateAluno
+namespace Alunos.Validators.Alunos
 {
-    public class UpdateAlunoCommandValidator: AbstractValidator<UpdateAlunoCommand>
+    public class UpdateAlunoRequestValidator: AbstractValidator<UpdateAlunoRequest>
     {
         private readonly IAppDbContext _context;
 
-        public UpdateAlunoCommandValidator(IAppDbContext context)
+        public UpdateAlunoRequestValidator(IAppDbContext context)
         {
             _context = context;
 

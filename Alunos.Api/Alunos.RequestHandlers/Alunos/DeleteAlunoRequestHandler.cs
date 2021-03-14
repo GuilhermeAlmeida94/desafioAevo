@@ -1,25 +1,21 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
+using Alunos.Domain.RequestObject;
 using MediatR;
 
-namespace Alunos.Api.Alunos.DeleteAluno
+namespace Alunos.RequestHandlers.Alunos
 {
-    public class DeleteAlunoCommand : IRequest
-    {
-        public int AlunoId { get; set; }
-    }
-
-    public class DeleteAlunoCommandHandler : IRequestHandler<DeleteAlunoCommand>
+    public class DeleteAlunoRequestHandler : IRequestHandler<DeleteAlunoRequest>
     {
         private readonly IAppDbContext _context;
 
-        public DeleteAlunoCommandHandler(IAppDbContext context)
+        public DeleteAlunoRequestHandler(IAppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<Unit> Handle(DeleteAlunoCommand command, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteAlunoRequest command, CancellationToken cancellationToken)
         {
             var aluno = await _context.Alunos.FindAsync(command.AlunoId);
             _context.Alunos.Remove(aluno);

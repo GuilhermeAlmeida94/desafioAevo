@@ -56,8 +56,16 @@ Qualquer problema ou dificuldade com o repositório, você pode entrar em contat
 <br><br>
 Estamos sempre em busca de melhoria. Por isso, caso tenha alguma sugestão, fique à vontade para compartilhar conosco! Boa sorte! 💛
 
-# Executando a API
-## Executando as migrations
+# Resolução
+## Estrutura
+A solução foi modificada para que tivesse projetos independentes:
+    - O projeto Alunos.Domain contém classes que serão utilizadas em toda a aplicação, como as entidades e a interface de contexto do banco de dados.
+    - O projeto Alunos.Infrastructure contém o banco de dados e pode conter arquivos para manipulação de arquivos, por exemplo.
+    - O projeto Alunos.Validators contém as validações das requisições (feito com Fluent Validator).
+    - O projeto Alunos.RequestHandlers contém as regra de negócio das requisições (aqui foi utilizado o MediatR para possibilitar a injeção de dependências em outro projeto e o AutoMapper para poder deixar as requisições menores).
+    - O projeto Alunos.Api contém os endpoints da aplicação. 
+## Executando a API
+### Executando as migrations
 - Instale o CLI do EF 
 ```bash
 dotnet tool update --global dotnet-ef
@@ -66,7 +74,7 @@ dotnet tool update --global dotnet-ef
 ```bash
 dotnet ef --startup-project ..\Alunos.Api\ database update
 ```
-## Executando a solução
+### Executando a solução
 - Entre no projeto `Alunos.Api` e execute o seguinte comando
 ```bash
 dotnet run

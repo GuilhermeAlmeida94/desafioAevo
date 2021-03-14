@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Alunos.Api.Alunos.CreateAluno;
 using MediatR;
-using Alunos.Api.Alunos.UpdateAluno;
-using Alunos.Api.Alunos.DeleteAluno;
+using Alunos.Domain.RequestObject;
 
 namespace Alunos.Api.Controllers
 {
@@ -41,22 +39,22 @@ namespace Alunos.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, UpdateAlunoCommand command)
+        public async Task<IActionResult> PutAluno(int id, UpdateAlunoRequest request)
         {
-            if (id != command.AlunoId)
+            if (id != request.AlunoId)
                 return BadRequest();
 
             if (ModelState.IsValid)
-                await _mediator.Send(command);           
+                await _mediator.Send(request);           
 
             return NoContent();
         }
 
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(CreateAlunoCommand command)
+        public async Task<ActionResult<Aluno>> PostAluno(CreateAlunoRequest request)
         {
             if (ModelState.IsValid)
-                return await _mediator.Send(command);
+                return await _mediator.Send(request);
             
             return NoContent();
         }
@@ -68,7 +66,7 @@ namespace Alunos.Api.Controllers
             if (aluno == null)
                 return NotFound();
 
-            await _mediator.Send(new DeleteAlunoCommand{ AlunoId = id });
+            await _mediator.Send(new DeleteAlunoRequest{ AlunoId = id });
 
             return NoContent();
         }
