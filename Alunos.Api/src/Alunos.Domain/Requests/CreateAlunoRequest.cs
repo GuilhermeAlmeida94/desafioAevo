@@ -1,7 +1,7 @@
 using Alunos.Domain.Entities;
 using MediatR;
 
-namespace Alunos.Domain.RequestObject
+namespace Alunos.Domain.Requests
 {
     public class CreateAlunoRequest : IRequest<Aluno>
     {

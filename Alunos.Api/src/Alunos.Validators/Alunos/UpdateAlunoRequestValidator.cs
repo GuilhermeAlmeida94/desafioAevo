@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +16,7 @@ namespace Alunos.Validators.Alunos
             _context = context;
 
             RuleFor(a => a.AlunoId)
+                .NotEmpty().WithMessage("O campo AlunoId é obrigatório.")
                 .MustAsync(ExistsAluno).WithMessage("O aluno com este id não existe.");
 
             RuleFor(a => a.Nome)

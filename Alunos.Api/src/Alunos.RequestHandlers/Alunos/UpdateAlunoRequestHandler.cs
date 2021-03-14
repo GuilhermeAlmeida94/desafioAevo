@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Alunos.Domain.Interfaces;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 
 namespace Alunos.RequestHandlers.Alunos
 {

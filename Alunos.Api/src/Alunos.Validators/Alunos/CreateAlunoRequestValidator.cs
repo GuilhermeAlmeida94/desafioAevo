@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +19,7 @@ namespace Alunos.Validators.Alunos
                 .NotEmpty().WithMessage("O campo nome é obrigatório.")
                 .MaximumLength(250).WithMessage("O campo nome deve ter no máximo 250 caracteres.")
                 .MustAsync(BeUniqueNome).WithMessage("Já existe um aluno com o nome especificado.");
-            
+
             RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("O campo email não é válido.");
         }

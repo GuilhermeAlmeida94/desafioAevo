@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 using MediatR;
 
 namespace Alunos.RequestHandlers.Alunos
