@@ -1,10 +1,12 @@
 ﻿using Alunos.Infrastructure.Context;
-using Alunos.Domain.Models;
+using Alunos.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alunos.Api.Alunos.CreateAluno;
+using MediatR;
 
 namespace Alunos.Api.Controllers
 {
@@ -13,10 +15,12 @@ namespace Alunos.Api.Controllers
     public class AlunosController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMediator _mediator;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(AppDbContext context, IMediator mediator)
         {
             _context = context;
+            _mediator = mediator;
         }
 
         // GET: api/Alunos
@@ -70,14 +74,13 @@ namespace Alunos.Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult<Aluno>> PostAluno(CreateAlunoCommand command)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            if (ModelState.IsValid)
+                return await _mediator.Send(command);
+            
+            return BadRequest(ModelState);
         }
 
         // DELETE: api/Alunos/5

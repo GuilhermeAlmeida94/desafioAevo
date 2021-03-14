@@ -20,7 +20,7 @@ namespace Alunos.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Alunos.Api.Models.Aluno", b =>
+            modelBuilder.Entity("Alunos.Api.Entities.Aluno", b =>
                 {
                     b.Property<int>("AlunoId")
                         .ValueGeneratedOnAdd()

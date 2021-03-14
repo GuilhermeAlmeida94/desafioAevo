@@ -1,4 +1,4 @@
-﻿namespace Alunos.Domain.Models
+﻿namespace Alunos.Domain.Entities
 {
     public class Aluno
     {
