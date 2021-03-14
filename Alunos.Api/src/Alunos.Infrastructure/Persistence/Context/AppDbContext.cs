@@ -18,6 +18,10 @@ namespace Alunos.Infrastructure.Context
         {
             return base.Entry(aluno);
         }
+        public void SetModified(object entity)
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

@@ -11,6 +11,7 @@ namespace Alunos.Domain.Interfaces
         DbSet<Aluno> Alunos { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        EntityEntry<Aluno> Entry(Aluno aluno);
+
+        void SetModified(object entity);
     }
 }

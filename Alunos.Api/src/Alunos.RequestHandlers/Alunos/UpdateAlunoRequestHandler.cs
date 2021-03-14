@@ -24,7 +24,7 @@ namespace Alunos.RequestHandlers.Alunos
         {
             var entity = _mapper.Map<Aluno>(command);
 
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.SetModified(entity);
 
             await _context.SaveChangesAsync(cancellationToken);
 
