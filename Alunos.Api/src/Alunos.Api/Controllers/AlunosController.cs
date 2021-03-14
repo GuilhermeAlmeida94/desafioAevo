@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 
 namespace Alunos.Api.Controllers
 {

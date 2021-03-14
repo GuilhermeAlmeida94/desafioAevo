@@ -1,35 +1,33 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Interfaces;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alunos.Validators.Alunos
 {
-    public class UpdateAlunoRequestValidator: AbstractValidator<UpdateAlunoRequest>
+    public class CreateAlunoRequestValidator : AbstractValidator<CreateAlunoRequest>
     {
         private readonly IAppDbContext _context;
 
-        public UpdateAlunoRequestValidator(IAppDbContext context)
+        public CreateAlunoRequestValidator(IAppDbContext context)
         {
             _context = context;
 
-            RuleFor(a => a.AlunoId)
-                .MustAsync(ExistsAluno).WithMessage("O aluno com este id não existe.");
-
             RuleFor(a => a.Nome)
                 .NotEmpty().WithMessage("O campo nome é obrigatório.")
-                .MaximumLength(250).WithMessage("O campo nome deve ter no máximo 250 caracteres.");
-            
+                .MaximumLength(250).WithMessage("O campo nome deve ter no máximo 250 caracteres.")
+                .MustAsync(BeUniqueNome).WithMessage("Já existe um aluno com o nome especificado.");
+
             RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("O campo email não é válido.");
         }
 
-        public async Task<bool> ExistsAluno(int AlunoId, CancellationToken cancellationToken)
+        public async Task<bool> BeUniqueNome(string Nome, CancellationToken cancellationToken)
         {
             return await _context.Alunos
-                .AnyAsync(i => i.AlunoId == AlunoId);
+                .AllAsync(n => n.Nome != Nome);
         }
     }
 }

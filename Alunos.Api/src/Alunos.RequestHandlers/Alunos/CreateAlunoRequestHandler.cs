@@ -4,7 +4,7 @@ using Alunos.Domain.Interfaces;
 using Alunos.Domain.Entities;
 using MediatR;
 using AutoMapper;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 
 namespace Alunos.RequestHandlers.Alunos
 {

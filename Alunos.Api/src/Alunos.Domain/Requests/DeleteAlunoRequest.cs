@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Alunos.Domain.RequestObject
+namespace Alunos.Domain.Requests
 {
     public class DeleteAlunoRequest : IRequest
     {

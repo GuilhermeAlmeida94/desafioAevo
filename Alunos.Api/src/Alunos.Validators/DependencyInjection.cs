@@ -2,7 +2,7 @@ using Alunos.Validators.Alunos;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 
 namespace Alunos.Validators
 {

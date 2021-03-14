@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Alunos.Domain.Interfaces;
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 
 namespace Alunos.RequestHandlers.Alunos
 {
@@ -24,7 +24,7 @@ namespace Alunos.RequestHandlers.Alunos
         {
             var entity = _mapper.Map<Aluno>(command);
 
-            _context.Entry(entity).State = EntityState.Modified;
+            _context.SetModified(entity);
 
             await _context.SaveChangesAsync(cancellationToken);
 

@@ -1,4 +1,4 @@
-using Alunos.Domain.RequestObject;
+using Alunos.Domain.Requests;
 using Alunos.Domain.Entities;
 using AutoMapper;
 

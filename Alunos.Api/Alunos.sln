@@ -3,15 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Api", "Alunos.Api\Alunos.Api.csproj", "{4866D448-F018-43D0-886D-C8C62310110A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F213CEE9-B692-414F-B5D5-FD9E3D41E3F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Domain", "Alunos.Domain\Alunos.Domain.csproj", "{3EEC1D0D-543A-43B4-9AEB-9BD33B452661}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Validators", "src\Alunos.Validators\Alunos.Validators.csproj", "{F649657D-2C13-4FDE-B1EA-6F6C2A2687EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Infrastructure", "Alunos.Infrastructure\Alunos.Infrastructure.csproj", "{5A6082D9-D1FA-4CFB-B0F2-B60E966B7A35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.RequestHandlers", "src\Alunos.RequestHandlers\Alunos.RequestHandlers.csproj", "{346E5A41-3DF1-400B-A3D8-893140C8551A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.RequestHandlers", "Alunos.RequestHandlers\Alunos.RequestHandlers.csproj", "{2AA58F50-8466-418A-871A-BB6A02BD4C60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Infrastructure", "src\Alunos.Infrastructure\Alunos.Infrastructure.csproj", "{02468EBE-25AD-4AF7-868D-7147170FB497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Validators", "Alunos.Validators\Alunos.Validators.csproj", "{2C9AC17C-BF41-41EF-976D-1E25C0275B60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Domain", "src\Alunos.Domain\Alunos.Domain.csproj", "{8675CD61-EBBC-4BBC-A0F7-04884249FB5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Api", "src\Alunos.Api\Alunos.Api.csproj", "{288A65BD-621E-4FEE-B129-A727EA76DC29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DA83AB3B-0F38-411A-895D-2E6BDB9F8C0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Validators.UnitTests", "test\Alunos.Validators.UnitTests\Alunos.Validators.UnitTests.csproj", "{2C1DB0C4-9DBD-4781-A9E5-568BDFC3AA85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.RequestHandlers.UnitTests", "test\Alunos.RequestHandlers.UnitTests\Alunos.RequestHandlers.UnitTests.csproj", "{4D823406-36D3-4029-BCB8-3BC3C78BE24F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,11 +47,48 @@ Global
 		{2C9AC17C-BF41-41EF-976D-1E25C0275B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C9AC17C-BF41-41EF-976D-1E25C0275B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C9AC17C-BF41-41EF-976D-1E25C0275B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D823406-36D3-4029-BCB8-3BC3C78BE24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D823406-36D3-4029-BCB8-3BC3C78BE24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D823406-36D3-4029-BCB8-3BC3C78BE24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D823406-36D3-4029-BCB8-3BC3C78BE24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1DB0C4-9DBD-4781-A9E5-568BDFC3AA85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1DB0C4-9DBD-4781-A9E5-568BDFC3AA85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1DB0C4-9DBD-4781-A9E5-568BDFC3AA85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1DB0C4-9DBD-4781-A9E5-568BDFC3AA85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F649657D-2C13-4FDE-B1EA-6F6C2A2687EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F649657D-2C13-4FDE-B1EA-6F6C2A2687EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F649657D-2C13-4FDE-B1EA-6F6C2A2687EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F649657D-2C13-4FDE-B1EA-6F6C2A2687EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346E5A41-3DF1-400B-A3D8-893140C8551A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346E5A41-3DF1-400B-A3D8-893140C8551A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346E5A41-3DF1-400B-A3D8-893140C8551A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346E5A41-3DF1-400B-A3D8-893140C8551A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02468EBE-25AD-4AF7-868D-7147170FB497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02468EBE-25AD-4AF7-868D-7147170FB497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02468EBE-25AD-4AF7-868D-7147170FB497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02468EBE-25AD-4AF7-868D-7147170FB497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8675CD61-EBBC-4BBC-A0F7-04884249FB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8675CD61-EBBC-4BBC-A0F7-04884249FB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8675CD61-EBBC-4BBC-A0F7-04884249FB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8675CD61-EBBC-4BBC-A0F7-04884249FB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{288A65BD-621E-4FEE-B129-A727EA76DC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{288A65BD-621E-4FEE-B129-A727EA76DC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{288A65BD-621E-4FEE-B129-A727EA76DC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{288A65BD-621E-4FEE-B129-A727EA76DC29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D295823-2EAE-4907-8623-7BDAC65ADD73}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D823406-36D3-4029-BCB8-3BC3C78BE24F} = {DA83AB3B-0F38-411A-895D-2E6BDB9F8C0B}
+		{2C1DB0C4-9DBD-4781-A9E5-568BDFC3AA85} = {DA83AB3B-0F38-411A-895D-2E6BDB9F8C0B}
+		{F649657D-2C13-4FDE-B1EA-6F6C2A2687EE} = {F213CEE9-B692-414F-B5D5-FD9E3D41E3F8}
+		{346E5A41-3DF1-400B-A3D8-893140C8551A} = {F213CEE9-B692-414F-B5D5-FD9E3D41E3F8}
+		{02468EBE-25AD-4AF7-868D-7147170FB497} = {F213CEE9-B692-414F-B5D5-FD9E3D41E3F8}
+		{8675CD61-EBBC-4BBC-A0F7-04884249FB5A} = {F213CEE9-B692-414F-B5D5-FD9E3D41E3F8}
+		{288A65BD-621E-4FEE-B129-A727EA76DC29} = {F213CEE9-B692-414F-B5D5-FD9E3D41E3F8}
 	EndGlobalSection
 EndGlobal
