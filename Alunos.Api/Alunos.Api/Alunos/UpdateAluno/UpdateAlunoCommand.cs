@@ -2,15 +2,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Alunos.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Alunos.Domain.Interfaces;
-using System.Linq;
 
 namespace Alunos.Api.Alunos.UpdateAluno
 {
-    public class UpdateAlunoCommand: IRequest
+    public class UpdateAlunoCommand : IRequest
     {
         public int AlunoId { get; set; }
         public string Nome { get; set; }
@@ -37,11 +35,6 @@ namespace Alunos.Api.Alunos.UpdateAluno
             await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return _context.Alunos.Any(e => e.AlunoId == id);
         }
     }
 }

@@ -3,11 +3,11 @@ using Alunos.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Alunos.Api.Alunos.CreateAluno;
 using MediatR;
 using Alunos.Api.Alunos.UpdateAluno;
+using Alunos.Api.Alunos.DeleteAluno;
 
 namespace Alunos.Api.Controllers
 {
@@ -24,23 +24,18 @@ namespace Alunos.Api.Controllers
             _mediator = mediator;
         }
 
-        // GET: api/Alunos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
         {
             return await _context.Alunos.ToListAsync();
         }
 
-        // GET: api/Alunos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Aluno>> GetAluno(int id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
-
             if (aluno == null)
-            {
                 return NotFound();
-            }
 
             return aluno;
         }
@@ -49,9 +44,7 @@ namespace Alunos.Api.Controllers
         public async Task<IActionResult> PutAluno(int id, UpdateAlunoCommand command)
         {
             if (id != command.AlunoId)
-            {
                 return BadRequest();
-            }
 
             if (ModelState.IsValid)
                 await _mediator.Send(command);           
@@ -65,23 +58,19 @@ namespace Alunos.Api.Controllers
             if (ModelState.IsValid)
                 return await _mediator.Send(command);
             
-            return BadRequest(ModelState);
+            return NoContent();
         }
 
-        // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult> DeleteAluno(int id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
             if (aluno == null)
-            {
                 return NotFound();
-            }
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
+            await _mediator.Send(new DeleteAlunoCommand{ AlunoId = id });
 
-            return aluno;
+            return NoContent();
         }
     }
 }
