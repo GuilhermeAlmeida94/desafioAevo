@@ -1,0 +1,25 @@
+name: .NET
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Restore dependencies
+      run: dotnet restore Alunos.Api
+    - name: Build
+      run: dotnet build Alunos.Api/src/Alunos.Api --no-restore
+    - name: RequestHandlers Test
+      run: dotnet test Alunos.Api/test/Alunos.RequestHandlers.UnitTests --no-build --verbosity normal
+    - name: Validators Test
+      run: dotnet test Alunos.Api/test/Alunos.Validators.UnitTests --no-build --verbosity normal
