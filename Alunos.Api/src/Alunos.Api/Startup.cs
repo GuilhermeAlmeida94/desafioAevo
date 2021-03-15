@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Alunos.Infrastructure;
 using Alunos.Validators;
 using Alunos.RequestHandlers;
+using Microsoft.AspNet.OData.Extensions;
 
 namespace Alunos.Api
 {
@@ -22,7 +23,10 @@ namespace Alunos.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInfrastructure(Configuration);
+            services.AddValidator();
+            services.AddRequestHandlers();
             
+            services.AddOData();
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>
@@ -33,9 +37,6 @@ namespace Alunos.Api
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
-
-            services.AddValidator();
-            services.AddRequestHandlers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -52,7 +53,11 @@ namespace Alunos.Api
             app.UseCors("EnableCORS");
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routeBuilder =>
+            {
+                routeBuilder.EnableDependencyInjection();
+                routeBuilder.Select().OrderBy().Filter();
+            });
         }
     }
 }
