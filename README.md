@@ -57,7 +57,7 @@ Qualquer problema ou dificuldade com o repositório, você pode entrar em contat
 Estamos sempre em busca de melhoria. Por isso, caso tenha alguma sugestão, fique à vontade para compartilhar conosco! Boa sorte! 💛
 
 # Resolução
-## Estrutura
+## Estrutura do back-end
 A solução foi modificada para que tivesse projetos independentes:
     - O projeto Alunos.Domain contém classes que serão utilizadas em toda a aplicação, como as entidades e a interface de contexto do banco de dados.
     - O projeto Alunos.Infrastructure contém o banco de dados e pode conter arquivos para manipulação de arquivos, por exemplo.

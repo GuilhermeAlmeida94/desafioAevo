@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Aluno } from 'src/shared/interfaces/aluno';
+import { AlunoCreateEditModalComponent } from '../aluno-create-edit-modal/aluno-create-edit-modal.component';
 
 const ELEMENT_DATA: Aluno[] = [
   {alunoId: 1, nome: 'Hydrogen', email: '1.0079'},
@@ -23,9 +25,17 @@ export class AlunoTableComponent implements OnInit {
   displayedColumns: string[] = ['alunoId', 'nome', 'email', 'edit'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
   }
 
+  openEditModal(data: Aluno): void {
+    const dialogRef = this.dialog.open(AlunoCreateEditModalComponent, {
+      width: '250px',
+      data
+    });
+
+    dialogRef.afterClosed().subscribe(result => { });
+  }
 }

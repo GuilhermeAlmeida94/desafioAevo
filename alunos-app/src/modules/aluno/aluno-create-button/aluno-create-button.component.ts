@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AlunoCreateEditModalComponent } from '../aluno-create-edit-modal/aluno-create-edit-modal.component';
 
 @Component({
   selector: 'app-aluno-create-button',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunoCreateButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+  }
+
+  openCreateModal(): void {
+    const dialogRef = this.dialog.open(AlunoCreateEditModalComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => { });
   }
 
 }
