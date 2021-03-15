@@ -58,24 +58,36 @@ Estamos sempre em busca de melhoria. Por isso, caso tenha alguma sugestão, fiqu
 
 # Resolução
 ## Estrutura do back-end
-A solução foi modificada para que tivesse projetos independentes:
-    - O projeto Alunos.Domain contém classes que serão utilizadas em toda a aplicação, como as entidades e a interface de contexto do banco de dados.
-    - O projeto Alunos.Infrastructure contém o banco de dados e pode conter arquivos para manipulação de arquivos, por exemplo.
-    - O projeto Alunos.Validators contém as validações das requisições (feito com Fluent Validator).
-    - O projeto Alunos.RequestHandlers contém as regra de negócio das requisições (aqui foi utilizado o MediatR para possibilitar a injeção de dependências em outro projeto e o AutoMapper para poder deixar as requisições menores).
-    - O projeto Alunos.Api contém os endpoints da aplicação. 
-## Executando a API
+Todo o back-end está na pasta `Alunos.Api`.
+
+O back-end em si está separado nos projetos da pasta `src` e foi modificado assim para que pudesse ser menos acoplado:
+- O projeto `Alunos.Domain` contém classes que serão utilizadas em toda a aplicação, como as entidades e a interface de contexto do banco de dados.
+- O projeto `Alunos.Infrastructure` contém o banco de dados e pode conter arquivos para manipulação de arquivos, por exemplo.
+- O projeto `Alunos.Validators` contém as validações das requisições (feito com Fluent Validator).
+- O projeto `Alunos.RequestHandlers` contém as regra de negócio das requisições (aqui foi utilizado o MediatR para possibilitar a injeção de dependências em outro projeto e o AutoMapper para poder deixar as requisições menores).
+- O projeto `Alunos.Api` contém os endpoints da aplicação.
+
+Os testes estão na pasta `test` e são referentes aos projetos `Alunos.RequestHandlers` e `Alunos.Validators`.
+## Back-end
 ### Executando as migrations
 - Instale o CLI do EF 
 ```bash
 dotnet tool update --global dotnet-ef
 ```
-- Entre no projeto `Alunos.Infrastructure` e execute o seguinte comando
+- Entre no projeto `Alunos.Api/src/Alunos.Infrastructure` e execute o seguinte comando
 ```bash
 dotnet ef --startup-project ..\Alunos.Api\ database update
 ```
 ### Executando a solução
-- Entre no projeto `Alunos.Api` e execute o seguinte comando
+Entre no projeto `Alunos.Api/src/Alunos.Api` e execute o seguinte comando
 ```bash
 dotnet run
+```
+## Front-end
+## Estrutura do front-end
+Todo o front-end está na pasta `alunos-app`.
+### Executando a solução
+Entre na pasta `alunos-app` e execute o seguinte comando
+```bash
+ng serve
 ```
