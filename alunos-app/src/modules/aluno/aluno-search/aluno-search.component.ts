@@ -14,14 +14,14 @@ export class AlunoSearchComponent implements OnInit {
     formBuilder: FormBuilder) {
       this.formGroup = formBuilder.group({
         nome: '',
-      })
+      });
     }
 
   ngOnInit(): void {
   }
 
   search(): void {
-    
+
   }
 
 }
