@@ -17,6 +17,7 @@ import { AlunoTableComponent } from 'src/modules/aluno/aluno-table/aluno-table.c
 import { AlunoCreateButtonComponent } from 'src/modules/aluno/aluno-create-button/aluno-create-button.component';
 import { AlunoCreateEditModalComponent } from 'src/modules/aluno/aluno-create-edit-modal/aluno-create-edit-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlunoSearchComponent } from 'src/modules/aluno/aluno-search/aluno-search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ToolbarComponent,
     AlunoTableComponent,
     AlunoCreateButtonComponent,
-    AlunoCreateEditModalComponent
+    AlunoCreateEditModalComponent,
+    AlunoSearchComponent
   ],
   imports: [
     BrowserModule,
