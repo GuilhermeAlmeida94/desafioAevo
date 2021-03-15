@@ -1,0 +1,8 @@
+<app-aluno-search
+  [(searchNome)]="searchNome"
+  (getAlunos)="getAlunos()"></app-aluno-search>
+<app-aluno-create-button
+  (getAlunos)="getAlunos()"></app-aluno-create-button>
+<app-aluno-table
+  [alunos]="alunos"
+  (getAlunos)="getAlunos()"></app-aluno-table>

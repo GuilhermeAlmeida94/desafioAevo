@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{ modalType }} Aluno</h1>
+<div mat-dialog-content [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nome">
+    <mat-error *ngIf="nomeRequiredError()"> {{ nomeRequiredErrorText() }} </mat-error>
+    <mat-error *ngIf="nomeMaxLengthError()"> {{ nomeMasLengthErrorText() }}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>E-mail</mat-label>
+    <input matInput formControlName="email">
+    <mat-error *ngIf="emailInvalidError()"> {{ emailInvalidErrorText() }}</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    (click)="close()">Cancel</button>
+  <button 
+    mat-button
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+    [disabled]="formGroup.invalid">
+    Save
+  </button>
+</div>
