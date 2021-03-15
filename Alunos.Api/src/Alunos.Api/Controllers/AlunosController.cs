@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Alunos.Domain.Requests;
+using Microsoft.AspNet.OData;
+using System.Linq;
 
 namespace Alunos.Api.Controllers
 {
@@ -22,11 +24,9 @@ namespace Alunos.Api.Controllers
             _mediator = mediator;
         }
 
+        [EnableQuery()]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
-        {
-            return await _context.Alunos.ToListAsync();
-        }
+        public ActionResult<IQueryable<Aluno>> GetAlunos() => _context.Alunos;
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Aluno>> GetAluno(int id)
