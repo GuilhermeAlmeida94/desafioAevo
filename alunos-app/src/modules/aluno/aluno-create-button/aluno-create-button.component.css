@@ -1,4 +1,5 @@
-button {
+.create-button {
     position: absolute;
+    float: right;
     right: 2%;
 }

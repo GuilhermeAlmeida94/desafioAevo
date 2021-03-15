@@ -17,6 +17,7 @@ import { AlunoCreateButtonComponent } from 'src/modules/aluno/aluno-create-butto
 import { AlunoCreateEditModalComponent } from 'src/modules/aluno/aluno-create-edit-modal/aluno-create-edit-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlunoSearchComponent } from 'src/modules/aluno/aluno-search/aluno-search.component';
+import { AlunoComponent } from './aluno/aluno.component';
 
 @NgModule({
   imports: [
@@ -35,13 +36,11 @@ import { AlunoSearchComponent } from 'src/modules/aluno/aluno-search/aluno-searc
     AlunoCreateButtonComponent,
     AlunoCreateEditModalComponent,
     AlunoSearchComponent,
-    AlunoTableComponent
+    AlunoTableComponent,
+    AlunoComponent
   ],
   exports: [
-    AlunoCreateButtonComponent,
-    AlunoCreateEditModalComponent,
-    AlunoSearchComponent,
-    AlunoTableComponent
+    AlunoComponent
   ]
 })
 export class AlunoModule { }

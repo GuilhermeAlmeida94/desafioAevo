@@ -1,10 +1,10 @@
 <div class="search mat-elevation-z5">
-  <form [formGroup]="formGroup">
+  <form (submit)="search()">
     <mat-form-field class="search-input">
       <input
         matInput
         placeholder="Procure pelo nome"
-        formControlName="nome">
+        (change)="searchInputChange($event)">
     </mat-form-field>
 
     <button 
@@ -12,7 +12,6 @@
       mat-raised-button
       class="search-button"
       color="primary"
-      (click)="search()"
       cdkFocusInitial>
       <mat-icon>search</mat-icon>
     </button>

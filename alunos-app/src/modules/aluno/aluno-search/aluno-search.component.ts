@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-aluno-search',
@@ -8,20 +7,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AlunoSearchComponent implements OnInit {
 
-  formGroup: FormGroup;
+  @Input() searchNome: string;
+  @Output() searchNomeChange = new EventEmitter<string>();
 
-  constructor(
-    formBuilder: FormBuilder) {
-      this.formGroup = formBuilder.group({
-        nome: '',
-      });
-    }
+  @Output() getAlunos = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  search(): void {
+  searchInputChange($event): void {
+    this.searchNomeChange.emit($event.target.value);
+  }
 
+  search(): void {
+    this.getAlunos.emit();
   }
 
 }

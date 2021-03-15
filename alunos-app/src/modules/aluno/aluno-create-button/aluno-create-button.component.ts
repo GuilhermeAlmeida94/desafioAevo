@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunoCreateEditModalComponent } from '../aluno-create-edit-modal/aluno-create-edit-modal.component';
 
@@ -8,6 +8,8 @@ import { AlunoCreateEditModalComponent } from '../aluno-create-edit-modal/aluno-
   styleUrls: ['./aluno-create-button.component.css']
 })
 export class AlunoCreateButtonComponent implements OnInit {
+
+  @Output() getAlunos = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
 
@@ -19,7 +21,10 @@ export class AlunoCreateButtonComponent implements OnInit {
       width: '250px',
     });
 
-    dialogRef.afterClosed().subscribe(result => { });
+    dialogRef.afterClosed()
+    .subscribe(
+      result => this.getAlunos.emit()
+    );
   }
 
 }

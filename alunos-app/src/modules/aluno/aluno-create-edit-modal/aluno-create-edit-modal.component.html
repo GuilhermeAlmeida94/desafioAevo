@@ -3,10 +3,13 @@
   <mat-form-field>
     <mat-label>Nome</mat-label>
     <input matInput formControlName="nome">
+    <mat-error *ngIf="nomeRequiredError()"> {{ nomeRequiredErrorText() }} </mat-error>
+    <mat-error *ngIf="nomeMaxLengthError()"> {{ nomeMasLengthErrorText() }}</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>E-mail</mat-label>
     <input matInput formControlName="email">
+    <mat-error *ngIf="emailInvalidError()"> {{ emailInvalidErrorText() }}</mat-error>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
@@ -18,5 +21,7 @@
     mat-raised-button
     color="primary"
     (click)="save()"
-    cdkFocusInitial>Save</button>
+    [disabled]="formGroup.invalid">
+    Save
+  </button>
 </div>
